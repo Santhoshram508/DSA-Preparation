@@ -1,0 +1,28 @@
+Problem Link: 
+https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=longest-sub-array-with-sum-k
+
+My Code:
+class Solution {
+    // Function for finding maximum and value pair
+    public static int lenOfLongSubarr(int A[], int N, int K) { 
+       int left =0;
+	        int right =0;
+	        int sum = 0;
+	        int maxlen = 0;
+	        while(right<N){
+	            while(left<=right && sum >= K){
+	                sum = sum +A[left];
+	                left++;
+	            }
+	                sum = sum+A[right];
+	                right++;   
+	            if(sum == K) {
+	            	maxlen = Math.max(maxlen, right-left+1);
+	            }
+	        }
+			return maxlen;
+    }
+}
+
+Output:
+I got 3 But I need to get 4
