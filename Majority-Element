@@ -20,3 +20,18 @@ class Solution {
 	       return -1;
     }
 }
+
+ public static int majorityElement1(int[] nums) {
+		   int n=nums.length;
+	     	int count=0;
+	        int majorityelement=0;
+	       for (int num : nums) {
+	            if (count == 0) {
+	                majorityelement = num;
+	            }
+	            count +=(num == majorityelement) ? 1 : -1;
+	            
+	        }
+
+	        return majorityelement;
+	 }
