@@ -23,62 +23,7 @@ Constraints :
 1 ≤ arr[i], x ≤ 106
 
 Code:
-public class CeilFloor {
-	public static int[] getFloorAndCeil(int x, int[] arr) {
-		int[] result = new int[2];
-		 result[0] = floor(arr,x);
-		 result[1] =ceil(arr,x);
-		 
-		return result;
-        
-    }
-	
-	public static  int ceil(int[] arr, int x) {
-		int low =0;
-	     int high = arr.length-1;
-	     int result =-1;
-	     while(low<=high){
-	        int mid = low + (high - low) / 2;
-	        
-	        if (arr[mid] >= x) {
-	            result = arr[mid]; 
-	            high = mid - 1;
-	        } else {
-	            low = mid + 1;
-	        }
-	    }
-	     return result; 
-	}
 
-	public static int floor(int[] arr,int x) {
-		 int low =0;
-	     int high = arr.length-1;
-	     int result =-1;
-	     while(low<=high){
-	        int mid = low + (high - low) / 2;
-	        
-	        if (arr[mid] <= x) {
-	            result = arr[mid];  
-	            low = mid + 1; 
-	        } else {
-	            high = mid - 1; 
-	        }
-	    }
-	     return result; 
-	}
-	public static void main(String[] args) {
-		 int x =7;
-		 int arr[] = {5, 6, 8, 9, 6, 5, 5, 6};
-		 int[] result =  getFloorAndCeil(x,arr);
-		 for(int ans:result) {
-			 System.out.println(ans +" ");
-		 }
-
-	}
-
-}
-
-Another code:
 class Solution {
     public int[] getFloorAndCeil(int x, int[] arr) {
            int floor = -1;
@@ -97,5 +42,21 @@ class Solution {
     }
 }
 
+Condition Check: if (num >= x)
 
+This checks if the value of num is greater than or equal to x.
+Ternary Operator: ceil = (ceil == -1) ? num : Math.min(ceil, num);
+
+This line uses a ternary operator to assign a value to ceil.
+Condition: (ceil == -1)
+If ceil is -1, it means ceil has not been set yet (assuming -1 is used as an initial value to indicate this).
+True Case: num
+If ceil is -1, assign num to ceil.
+False Case: Math.min(ceil, num)
+If ceil is not -1, assign the smaller value between ceil and num to ceil.
+Summary:
+If num is greater than or equal to x, the code checks if ceil is -1.
+If ceil is -1, it sets ceil to num.
+Otherwise, it sets ceil to the smaller value between the current ceil and num.
+This logic is often used to find the smallest number greater than or equal to x in a list of numbers.
 
